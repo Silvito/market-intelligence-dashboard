@@ -1,10 +1,11 @@
 import yfinance as yf #api de yahoo finance para datos de mercado
 import pandas as pd #pandas para trabajar con dataframes
+from config import (RAW_DATA_DIR, PROCESSED_DATA_DIR, SYMBOLS, START_DATE) #importamos las constantes del archivo de configuracion 
 
 #METODOS
 
 #metodo de descarga de datos de yahoo finance, recibe un simbolo y una fecha de inicio, devuelve un dataframe con los datos descargados
-def download_data(symbol, start_date="2010-01-01"):
+def download_data(symbol, start_date=START_DATE):
     try: #capturamos errores en caso de que la descarga falle
         df = yf.download(
             symbol,
@@ -57,19 +58,19 @@ def validate_data(df):
 def save_data(df, filename):
     df.to_csv(filename, index=False)
 
-#se descargan y validan los datos de SPY y QQQ, y se imprimen las primeras filas de cada dataframe
+#se descargan y validan los datos de cada simbolo en SYMBOLS, y se imprimen las primeras filas de cada dataframe
 if __name__ == "__main__":
-    #descargar, limpiar y despues validar datos de SPY y QQQ
-    spy = clean_data(download_data("SPY"))
-    validate_data(spy)
-    qqq = clean_data(download_data("QQQ"))
-    validate_data(qqq)
+    #por cada simbolo se generan los datos RAW y los datos PROCESADOS
+    for symbol in SYMBOLS:
+        #descargar los datos crudos y guardarlos en RAW
+        raw_df=download_data(symbol,START_DATE)
+        save_data(raw_df,RAW_DATA_DIR / f"{symbol.lower()}_raw.csv")
 
-    #guardamos los datos en archivos csv
-    save_data(spy, "data/procesada/spy.csv")
-    save_data(qqq, "data/procesada/qqq.csv")
+        #limpiar el raw_df, validar y guardar el clean_df en PROCESADA
+        clean_df = clean_data(raw_df)
+        validate_data(clean_df)
+        save_data(clean_df,PROCESSED_DATA_DIR / f"{symbol.lower()}.csv")
+        print(f"\nPrimeras filas de {symbol}:")
+        print(clean_df.head())
 
-    #imprimimos las primeras filas de cada dataframe para verificar que se descargaron correctamente
-
-    print(spy.head())
-    print(qqq.head())
+    

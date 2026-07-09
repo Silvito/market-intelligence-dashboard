@@ -1,0 +1,32 @@
+import pathlib
+
+# ==========================
+# Paths del proyecto
+# ==========================
+
+ROOT_DIR = pathlib.Path(__file__).parent.parent
+
+DATA_DIR = ROOT_DIR / "data"
+RAW_DATA_DIR = DATA_DIR / "raw"
+PROCESSED_DATA_DIR = DATA_DIR / "procesada"
+
+# ==========================
+# Configuración de mercado
+# ==========================
+
+SYMBOLS = [
+    "SPY",
+    "QQQ"
+]
+
+START_DATE = "2010-01-01"
+
+# ==========================
+# Configuración futura
+# ==========================
+
+DEFAULT_RSI_PERIOD = 14
+
+DEFAULT_SMA_SHORT = 20
+DEFAULT_SMA_MEDIUM = 50
+DEFAULT_SMA_LONG = 200
