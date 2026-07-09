@@ -30,18 +30,28 @@ The architecture was designed to be easily extensible to additional assets such 
 Market Intelligence Dashboard/
 │
 ├── data/
+│   ├── raw/              
 │   └── procesada/
-│       ├── spy.csv
-│       └── qqq.csv
+│
+├── notebooks/
+│   └── exploracion.ipynb 
 │
 ├── src/
-│   └── data_loader.py
+│   ├── data_loader.py  
+│   ├── indicators.py   
+│   ├── strategies.py   
+│   ├── backtest.py     
+│   └── config.py         
 │
-├── venv/
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+├── dashboard/
+│   └── app.py            
+│
+├── tests/                
+│   └── test_loader.py    
+│
+├── .gitignore            
+├── requirements.txt  
+└── README.md         
 
 ---
 
