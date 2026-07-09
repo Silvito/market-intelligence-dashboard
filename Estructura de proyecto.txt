@@ -1,8 +1,8 @@
 market-intelligence-dashboard/
 │
 ├── data/
-│   ├── raw/
-│   └── processed/
+│ 
+│   └── procesada/
 │
 ├── notebooks/
 │
