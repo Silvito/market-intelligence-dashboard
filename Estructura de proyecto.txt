@@ -1,0 +1,21 @@
+market-intelligence-dashboard/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│
+├── src/
+│   ├── data_loader.py
+│   ├── indicators.py
+│   ├── strategies.py
+│   └── backtest.py
+│
+├── dashboard/
+│
+├── requirements.txt
+│
+├── README.md
+│
+├── venv
