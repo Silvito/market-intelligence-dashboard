@@ -1,3 +1,6 @@
+#traemos las constantes desde config.py
+from src.config import (DEFAULT_RSI_PERIOD,DEFAULT_SMA_SHORT,DEFAULT_SMA_MEDIUM,DEFAULT_SMA_LONG,DEFAULT_EMA_PERIOD)
+
 #Indicadores para el analisis tecnico de los datos de mercado
 
 #SMA o media movil simple, recibe un dataframe y un periodo, devuelve el dataframe con una nueva columna con la SMA
@@ -98,11 +101,11 @@ def add_average_volume(df,period=20):
 
 #Agrega todos los indicadores al dataframe, recibe un dataframe y devuelve el dataframe con todas las columnas de indicadores
 def add_all_indicators(df):
-    df = add_sma(df, 20)
-    df = add_sma(df, 50)
-    df = add_sma(df, 200)
-    df = add_ema(df, 20)
-    df = add_rsi(df, 14)
+    df = add_sma(df, DEFAULT_SMA_SHORT)
+    df = add_sma(df, DEFAULT_SMA_MEDIUM)
+    df = add_sma(df, DEFAULT_SMA_LONG)
+    df = add_ema(df, DEFAULT_EMA_PERIOD)
+    df = add_rsi(df, DEFAULT_RSI_PERIOD)
     df = add_macd(df)
     df = add_bollinger_bands(df, 20, 2)
     df = add_average_volume(df, 20)

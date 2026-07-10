@@ -22,11 +22,11 @@ SYMBOLS = [
 START_DATE = "2010-01-01"
 
 # ==========================
-# Configuración futura
+# Configuración indicadores
 # ==========================
-
-DEFAULT_RSI_PERIOD = 14
 
 DEFAULT_SMA_SHORT = 20
 DEFAULT_SMA_MEDIUM = 50
 DEFAULT_SMA_LONG = 200
+DEFAULT_EMA_PERIOD = 20
+DEFAULT_RSI_PERIOD = 14
