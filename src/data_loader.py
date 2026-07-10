@@ -1,6 +1,7 @@
 import yfinance as yf #api de yahoo finance para datos de mercado
 import pandas as pd #pandas para trabajar con dataframes
-from src.config import (RAW_DATA_DIR, PROCESSED_DATA_DIR, SYMBOLS, START_DATE) #importamos las constantes del archivo de configuracion 
+#agregamos src para que funcione en el main y en los tests
+from src.config import (RAW_DATA_DIR, PROCESSED_DATA_DIR, SYMBOLS, START_DATE) #importamos las constantes del archivo de configuracion
 
 #METODOS
 

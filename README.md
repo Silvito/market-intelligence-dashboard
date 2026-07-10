@@ -242,9 +242,17 @@ The script will:
 
 Current version:
 
+**Phase 2 - Implementation of technical indicators module (`indicators.py`) completed.**
+- SMA (20, 50, 200)
+- EMA
+- RSI
+- MACD
+- Bollinger Bands
+- Average Volume
+
 **Phase 1 — Data ingestion and validation pipeline completed.**
 
 Next milestone:
 
-**Implementation of technical indicators module (`indicators.py`).**# Market Intelligence Dashboard — SPY & QQQ Technical Analysis
+**Implementation of backtesting strategies module (`strategies.py`).**# Market Intelligence Dashboard — SPY & QQQ Technical Analysis
 
