@@ -44,7 +44,6 @@ def add_rsi(df, period=14):
 
     return df
 
-
 #MACD o convergencia/divergencia de medias moviles, recibe un dataframe y devuelve el dataframe con tres nuevas columnas: MACD, MACD_SIGNAL y MACD_HIST
 def add_macd(df):
 
@@ -97,19 +96,24 @@ def add_average_volume(df,period=20):
 
     return df
 
-#bloque de prueba
-
-if __name__ == "__main__":
-    import pandas as pd
-
-    df = pd.read_csv("data/procesada/spy.csv")
-
+#Agrega todos los indicadores al dataframe, recibe un dataframe y devuelve el dataframe con todas las columnas de indicadores
+def add_all_indicators(df):
     df = add_sma(df, 20)
+    df = add_sma(df, 50)
+    df = add_sma(df, 200)
     df = add_ema(df, 20)
     df = add_rsi(df, 14)
     df = add_macd(df)
     df = add_bollinger_bands(df, 20, 2)
     df = add_average_volume(df, 20)
+    return df
+
+#bloque de prueba
+
+if __name__ == "__main__":
+    import pandas as pd
+    df = pd.read_csv("data/procesada/spy.csv")
+    df = add_all_indicators(df)
 
     columns_to_show = [
         "Date",
