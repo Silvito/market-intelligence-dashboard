@@ -60,6 +60,82 @@ equity_fig.update_layout(
     yaxis_title="Portfolio Value"
 )
 
+# ==========================================
+# Price chart
+# ==========================================
+price_fig = go.Figure()
+
+# Precio
+price_fig.add_trace(
+    go.Candlestick(
+        x=df["Date"],
+        open=df["Open"],
+        high=df["High"],
+        low=df["Low"],
+        close=df["Close"],
+        name="SPY"
+    )
+)
+
+# SMA20
+price_fig.add_trace(
+    go.Scatter(
+        x=df["Date"],
+        y=df["SMA_20"],
+        name="SMA 20"
+    )
+)
+
+# SMA50
+price_fig.add_trace(
+    go.Scatter(
+        x=df["Date"],
+        y=df["SMA_50"],
+        name="SMA 50"
+    )
+)
+
+# ==========================================
+# Buy and sell signals
+# ==========================================
+
+buy_signals = df[df["SMA_SIGNAL"] == 1]
+
+price_fig.add_trace(
+    go.Scatter(
+        x=buy_signals["Date"],
+        y=buy_signals["Close"],
+        mode="markers",
+        name="BUY",
+        marker=dict(
+            size=12,
+            symbol="triangle-up")
+    )
+)
+
+sell_signals = df[df["SMA_SIGNAL"] == -1]
+
+price_fig.add_trace(
+    go.Scatter(
+        x=sell_signals["Date"],
+        y=sell_signals["Close"],
+        mode="markers",
+        name="SELL",
+        marker=dict(
+            size=12,
+            symbol="triangle-down"
+        )
+    )
+)
+
+# ==========================================
+# Titles
+# ==========================================
+price_fig.update_layout(
+    title="SPY Price with SMA Signals",
+    xaxis_title="Date",
+    yaxis_title="Price"
+)
 
 # ==========================================
 # Aplicación Dash
@@ -101,9 +177,11 @@ app.layout = html.Div(
 
         dcc.Graph(
             figure=equity_fig
-        )
+        ),
 
-    ]
+        dcc.Graph(
+            figure=price_fig
+        )]
 
 )
 
