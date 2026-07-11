@@ -111,33 +111,5 @@ def add_all_indicators(df):
     df = add_average_volume(df, 20)
     return df
 
-#bloque de prueba
-
-if __name__ == "__main__":
-    import pandas as pd
-    df = pd.read_csv("data/procesada/spy.csv")
-    df = add_all_indicators(df)
-
-    columns_to_show = [
-        "Date",
-        "Close",
-        "SMA_20",
-        "EMA_20",
-        "RSI_14",
-        "MACD",
-        "MACD_SIGNAL",
-        "MACD_HIST",
-        "BB_UPPER_20_2",
-        "BB_MIDDLE_20",
-        "BB_LOWER_20_2",
-        "AVG_VOLUME_20"
-    ]
-
-    print(df[columns_to_show].tail(10))
-    print("\nColumnas generadas:")
-    print(df.columns)
-    print("\nValores nulos:")
-    print(df[columns_to_show].isnull().sum())
-
 
     
