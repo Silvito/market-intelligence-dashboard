@@ -20,6 +20,7 @@ SYMBOLS = [
 ]
 
 START_DATE = "2010-01-01"
+INITIAL_BALANCE = 1000.0
 
 # ==========================
 # Configuración indicadores
